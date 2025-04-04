@@ -10,4 +10,12 @@ struct game_state dequeue(struct queue *q) {
   size_t serialized = remove_from_head(&q->data); 
   return deserialize(serialized);}
 
-int number_of_moves(struct game_state start) { return 0; }
+int number_of_moves(struct game_state start) {
+  struct queue go;
+  go.data.head = NULL;
+  enqueue(&go, start);
+  size_t cap = 100;
+  size_t count = 0;
+  uint64_t *
+
+}
