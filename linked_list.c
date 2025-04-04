@@ -7,7 +7,12 @@ struct list_node *new_node(size_t value) {
   node-> value = value;
   return node; }
 
-void insert_at_head(struct linked_list *list, size_t value) {}
+void insert_at_head(struct linked_list *list, size_t value) {
+  struct list_node **loc = &list->head;
+  struct list_node *new = new_node(value);
+  new->next = *loc;
+  *loc = newNode;
+}
 
 void insert_at_tail(struct linked_list *list, size_t value) {}
 
