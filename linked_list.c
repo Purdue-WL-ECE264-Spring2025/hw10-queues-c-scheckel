@@ -23,7 +23,13 @@ void insert_at_tail(struct linked_list *list, size_t value) {
   *loc = new_node(value);
 }
 
-size_t remove_from_head(struct linked_list *list) { return 0; }
+size_t remove_from_head(struct linked_list *list) {
+  struct list_node **loc = &list-> head;
+  struct list_node **del = *loc;
+  size_t retval = del ->value;
+  *loc = del->next;
+  free(del);
+  return retval; }
 
 size_t remove_from_tail(struct linked_list *list) { return 0; }
 
