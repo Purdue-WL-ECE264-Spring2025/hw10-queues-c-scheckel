@@ -2,7 +2,10 @@
 
 #include <stdlib.h>
 
-struct list_node *new_node(size_t value) { return NULL; }
+struct list_node *new_node(size_t value) { 
+  struct list_node *retnode = malloc(sizeof(struct list_node));
+  node-> value = value;
+  return node; }
 
 void insert_at_head(struct linked_list *list, size_t value) {}
 
