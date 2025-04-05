@@ -104,7 +104,7 @@ int number_of_moves(struct game_state start) {
       }
          }
       }
-    free(visited);
+    free(visit);
         return -1;
 
 }
