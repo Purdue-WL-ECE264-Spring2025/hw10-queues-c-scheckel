@@ -25,7 +25,7 @@ void insert_at_tail(struct linked_list *list, size_t value) {
 
 size_t remove_from_head(struct linked_list *list) {
   struct list_node **loc = &list-> head;
-  struct list_node **del = *loc;
+  struct list_node *del = *loc;
   size_t retval = del ->value;
   *loc = del->next;
   free(del);
@@ -36,7 +36,7 @@ size_t remove_from_tail(struct linked_list *list) {
   while(*loc != NULL){
     loc = &((*loc)->next);
   }
-  struct list_node **del = *loc;
+  struct list_node *del = *loc;
   size_t retval = del ->value;
   *loc = del->next;
   free(del);
