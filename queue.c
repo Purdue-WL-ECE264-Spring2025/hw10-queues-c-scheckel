@@ -57,6 +57,8 @@ int number_of_moves(struct game_state start) {
         }
           visit[count++] = serialized;
           enqueue(&go, next);
+      }
+    }
           next = cur;
           move_left(&next);
 
@@ -79,6 +81,8 @@ int number_of_moves(struct game_state start) {
         }
           visit[count++] = serialized;
           enqueue(&go, next);
+      }
+      }
           next = cur;
           move_right(&next);
 
@@ -104,7 +108,8 @@ int number_of_moves(struct game_state start) {
       }
          }
       }
+      
     free(visit);
         return -1;
+      }
 
-}
