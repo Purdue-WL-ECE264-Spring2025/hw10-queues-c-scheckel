@@ -59,6 +59,30 @@ int number_of_moves(struct game_state start) {
           enqueue(&go, next);
       }
     }
+    next = cur;
+          move_down(&next);
+    
+     if(next.num_steps > cur.num_steps){
+      if(solved(next)){
+        free(visit);
+        return next.num_steps;}
+      uint64_t serialized = serialize(next);
+      int visited = 0;
+      for(size_t i = 0; i < count; i++){
+        if(visit[i] == serialized){
+          visited = 1;
+          break;
+        }
+      }
+      if(!visited){
+        if(count == cap){
+          cap *=2;
+          visit = realloc(visit, cap * sizeof(uint64_t));
+        }
+          visit[count++] = serialized;
+          enqueue(&go, next);
+      }
+      }
           next = cur;
           move_left(&next);
 
