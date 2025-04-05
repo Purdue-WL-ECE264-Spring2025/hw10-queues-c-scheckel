@@ -10,6 +10,18 @@ struct game_state dequeue(struct queue *q) {
   size_t serialized = remove_from_head(&q->data); 
   return deserialize(serialized);}
 
+int solved(struct game_state state){
+  uint8_t final[4][4] ={
+    {1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,0}
+    };
+for( int i = 0; i <4; i++){
+for(int j=0; j< 4; j++){
+if (state.tiles[i][j] != final[i][j]) return 0;
+}
+}
+return 1;
+  }
+
 int number_of_moves(struct game_state start) {
   struct queue go;
   go.data.head = NULL;
