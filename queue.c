@@ -66,8 +66,8 @@ int number_of_moves(struct game_state start) {
       if(solved(next)){
         free(visit);
         return next.num_steps;}
-      serialized = serialize(next);
-      visited = 0;
+      uint64_t serialized = serialize(next);
+      int visited = 0;
       for(size_t i = 0; i < count; i++){
         if(visit[i] == serialized){
           visited = 1;
