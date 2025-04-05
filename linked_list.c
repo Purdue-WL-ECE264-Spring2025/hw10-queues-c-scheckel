@@ -42,13 +42,14 @@ size_t remove_from_tail(struct linked_list *list) {
   free(del);
   return retval; }
 
-void free_list(struct linked_list list) {
-  struct list_node *node = list.head;
+void free_list(struct linked_list *list) {
+  struct list_node *node = list->head;
   while(node != NULL){
     struct list_node *next = node->next;
     free(node);
     node = next;
   }
+  list->head = NULL;
 }
 
 // Utility function to help you debugging, do not modify
