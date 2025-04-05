@@ -134,6 +134,7 @@ int number_of_moves(struct game_state start) {
       }
       
     free(visit);
+  free_list(go.data);
         return -1;
       }
 
