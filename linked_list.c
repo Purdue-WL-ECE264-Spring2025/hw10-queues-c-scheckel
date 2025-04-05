@@ -4,9 +4,9 @@
 
 struct list_node *new_node(size_t value) { 
   struct list_node *retnode = malloc(sizeof(struct list_node));
-  node-> value = value;
-  node-> next = NULL;
-  return node; }
+  retnode-> value = value;
+  retnode-> next = NULL;
+  return retnode; }
 
 void insert_at_head(struct linked_list *list, size_t value) {
   struct list_node **loc = &list->head;
