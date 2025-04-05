@@ -16,6 +16,82 @@ int number_of_moves(struct game_state start) {
   enqueue(&go, start);
   size_t cap = 100;
   size_t count = 0;
-  uint64_t *
+  uint64_t *visit = malloc(cap * sizeof(uint64_t));
+
+  visit[count++] = serialize(start);
+
+  while (go.data.head != NULL){
+    struct game_state cur = dequeue(&go);
+    struct game_state next;
+    next = cur;
+    move_up(&next);
+    if(next.num_steps > cur.num_steps){
+      if(solved(next)){
+        free(visit);
+        return next.num_steps;}
+      uint64_t serialized = serialize(next);
+      int visited = 0;
+      for(size_t i = 0; i < count; i++){
+        if(visit[i] == serialized){
+          visited = 1;
+          break;
+        }
+      }
+      if(!visited){
+        if(count == cap){
+          cap *=2;
+          visit = realloc(visit, cap * sizeof(uint64_t));
+        }
+          visit[count++] = serialized;
+          enqueue(&go, next);
+          next = cur;
+          move_left(&next);
+
+      if(next.num_steps > cur.num_steps){
+      if(solved(next)){
+        free(visit);
+        return next.num_steps;}
+      uint64_t serialized = serialize(next);
+      int visited = 0;
+      for(size_t i = 0; i < count; i++){
+        if(visit[i] == serialized){
+          visited = 1;
+          break;
+        }
+      }
+      if(!visited){
+        if(count == cap){
+          cap *=2;
+          visit = realloc(visit, cap * sizeof(uint64_t));
+        }
+          visit[count++] = serialized;
+          enqueue(&go, next);
+          next = cur;
+          move_right(&next);
+
+         if(next.num_steps > cur.num_steps){
+      if(solved(next)){
+        free(visit);
+        return next.num_steps;}
+      uint64_t serialized = serialize(next);
+      int visited = 0;
+      for(size_t i = 0; i < count; i++){
+        if(visit[i] == serialized){
+          visited = 1;
+          break;
+        }
+      }
+      if(!visited){
+        if(count == cap){
+          cap *=2;
+          visit = realloc(visit, cap * sizeof(uint64_t));
+        }
+          visit[count++] = serialized;
+          enqueue(&go, next);
+      }
+         }
+      }
+    free(visited);
+        return -1;
 
 }
